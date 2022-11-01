@@ -2,19 +2,54 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <string>
 
-int main()
+
+int main(int argc, char *argv[])
 {
-    std::cout << "Hello World!\n";
+    if (argc == 1) {
+        runPrompt();
+    }
+    else if (argc == 2) {
+        runFile(argv[1]);
+    }
+    else {
+        printf("Usage: %s <script>\n", argv[0]);
+        return 1;
+    }
+
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void static runFile(std::string path) {
+    std::string output;
+    std::string fileData;
+    std::ifstream file(path);
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    while (std::getline(file, output))
+    {
+        fileData.append(output);
+    }
+
+    run(fileData);
+}
+
+void static runPrompt() {
+    while (1) 
+    {
+        std::string line;
+        std::cout << "> ";
+        std::getline(std::cin, line);
+        if (line[0] == '\0')
+        {
+            break;
+        }
+        run(line);
+    }
+}
+
+void static run(std::string source) {
+
+}
