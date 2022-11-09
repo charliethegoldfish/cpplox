@@ -31,6 +31,11 @@ void Lox::runFile(std::string path)
 	}
 
 	run(fileData);
+
+	if (hadError)
+	{
+		// TODO: Implement #ErrorHandling for exit here (pg 42)
+	}
 }
 
 void Lox::runPrompt()
@@ -45,10 +50,24 @@ void Lox::runPrompt()
 			break;
 		}
 		run(line);
+		hadError = false;
 	}
 }
 
 void Lox::run(std::string source)
 {
+	// TODO: Implement function as per pg 41 once #Scanner is ready
+}
 
+void Lox::error(int line, std::string message)
+{
+	report(line, "", message);
+}
+
+void Lox::report(int line, std::string where, std::string message)
+{
+	// TODO: Implement #ErrorHandling for this message - error print rather than normal print (pg 41)
+	// printf("[line %i] Error %s: %s", line, where, message);
+	std::cout << "[line " << line << "] Error " << where << ": " << message << std::endl;
+	hadError = true;
 }
