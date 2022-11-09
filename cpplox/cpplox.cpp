@@ -1,55 +1,11 @@
 // cpplox.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-#include <fstream>
 #include <stdio.h>
-#include <string>
+#include "Lox.h"
 
 
 int main(int argc, char *argv[])
 {
-    if (argc == 1) {
-        runPrompt();
-    }
-    else if (argc == 2) {
-        runFile(argv[1]);
-    }
-    else {
-        printf("Usage: %s <script>\n", argv[0]);
-        return 1;
-    }
-
-    return 0;
-}
-
-void static runFile(std::string path) {
-    std::string output;
-    std::string fileData;
-    std::ifstream file(path);
-
-    while (std::getline(file, output))
-    {
-        fileData.append(output);
-    }
-
-    run(fileData);
-}
-
-void static runPrompt() {
-    while (1) 
-    {
-        std::string line;
-        std::cout << "> ";
-        std::getline(std::cin, line);
-        if (line[0] == '\0')
-        {
-            break;
-        }
-        run(line);
-    }
-}
-
-void static run(std::string source) {
-
+    return Lox::main(argc, argv);
 }
