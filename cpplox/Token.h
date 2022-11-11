@@ -2,36 +2,65 @@
 
 #include <string>
 
-enum TokenType {
-	// Single-character tokens
-	LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE, COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,
+typedef std::string TokenType;
 
-	// One or two character tokens
-	BANG, BANG_EQUAL, EQUAL, EQUAL_EQUAL, GREATER, GREAT_EQUAL, LESS, LESS_EQUAL,
+// Single-character tokens
+const TokenType LEFT_PAREN = "LEFT_PAREN";
+const TokenType RIGHT_PAREN = "RIGHT_PAREN";
+const TokenType LEFT_BRACE = "LEFT_BRACE";
+const TokenType RIGHT_BRACE = "RIGHT_BRACE";
+const TokenType COMMA = "COMMA";
+const TokenType DOT = "DOT";
+const TokenType MINUS = "MINUS";
+const TokenType PLUS = "PLUS";
+const TokenType SEMICOLON = "SEMICOLON";
+const TokenType SLASH = "SLASH";
+const TokenType STAR = "STAR";
 
-	// Literals
-	IDENTIFIER, STRING, NUMBER,
+// One or two character tokens
+const TokenType BANG = "BANG";
+const TokenType BANG_EQUAL = "BANG_EQUAL";
+const TokenType EQUAL = "EQUAL";
+const TokenType EQUAL_EQUAL = "EQUAL_EQUAL";
+const TokenType GREATER = "GREATER";
+const TokenType GREAT_EQUAL = "GREAT_EQUAL";
+const TokenType LESS = "LESS";
+const TokenType LESS_EQUAL = "LESS_EQUAL";
 
-	// Keywords
-	AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR, PRINT, RETURN, SUPER, THIS, TRUE, VAR, WHILE,
+// Keywords
+const TokenType AND = "AND";
+const TokenType CLASS = "CLASS";
+const TokenType ELSE = "ELSE";
+const TokenType FALSE = "FALSE";
+const TokenType FUN = "FUN";
+const TokenType FOR = "FOR";
+const TokenType IF = "IF";
+const TokenType NIL = "NIL";
+const TokenType OR = "OR";
+const TokenType PRINT = "PRINT";
+const TokenType RETURN = "RETURN";
+const TokenType SUPER = "SUPER";
+const TokenType THIS = "THIS";
+const TokenType TRUE = "TRUE";
+const TokenType VAR = "VAR";
+const TokenType WHILE = "WHILE";
 
-	ENDOF
-};
+const TokenType ENDOF = "EOF";
 
-union Literal
-{
-	double number;
-	std::string string;
-};
+//union Literal
+//{
+//	double number;
+//	std::string string;
+//};
 
 class Token
 {
 private:
-	TokenType type;
-	std::string lexeme;
+	const TokenType type;
+	const std::string lexeme;
 	//const Literal literal;
-	std::string literal;
-	int line;
+	const std::string literal;
+	const int line;
 
 	Token(TokenType type, std::string lexeme, std::string literal, int line);
 
