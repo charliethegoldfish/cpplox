@@ -3,6 +3,8 @@
 #include <fstream>
 #include <stdio.h>
 
+bool Lox::hadError = false;
+
 int Lox::main(int argc, char* argv[])
 {
 	if (argc == 1) {
@@ -32,7 +34,7 @@ void Lox::runFile(std::string path)
 
 	run(fileData);
 
-	if (hadError)
+	if (Lox::hadError)
 	{
 		// TODO: Implement #ErrorHandling for exit here (pg 42)
 	}
@@ -50,7 +52,7 @@ void Lox::runPrompt()
 			break;
 		}
 		run(line);
-		hadError = false;
+		Lox::hadError = false;
 	}
 }
 
@@ -69,5 +71,5 @@ void Lox::report(int line, std::string where, std::string message)
 	// TODO: Implement #ErrorHandling for this message - error print rather than normal print (pg 41)
 	// printf("[line %i] Error %s: %s", line, where, message);
 	std::cout << "[line " << line << "] Error " << where << ": " << message << std::endl;
-	hadError = true;
+	Lox::hadError = true;
 }
