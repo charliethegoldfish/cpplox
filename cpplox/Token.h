@@ -47,6 +47,7 @@ const TokenType WHILE = "WHILE";
 
 const TokenType ENDOF = "EOF";
 
+//TODO: #TokenLiteral setup union as literal
 //union Literal
 //{
 //	double number;
@@ -58,13 +59,14 @@ class Token
 private:
 	const TokenType type;
 	const std::string lexeme;
+	//TODO: #TokenLiteral swap string for literal union
 	//const Literal literal;
 	const std::string literal;
 	const int line;
 
-	Token(TokenType type, std::string lexeme, std::string literal, int line);
-
 public:
+	//TODO: #TokenLiteral swap string literal variable for literal union
+	Token(TokenType type, std::string lexeme, std::string literal, int line);
 	std::string toString();
 };
 
