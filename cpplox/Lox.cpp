@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include "Scanner.h"
 
 bool Lox::hadError = false;
 
@@ -59,6 +60,14 @@ void Lox::runPrompt()
 void Lox::run(std::string source)
 {
 	// TODO: Implement function as per pg 41 once #Scanner is ready
+	Scanner scanner = Scanner(source);
+	std::vector<Token> tokens = scanner.scanTokens();
+
+	// For now just print the tokens
+	for (auto& token : tokens)
+	{
+		std::cout << token.toString() << std::endl;
+	}
 }
 
 void Lox::error(int line, std::string message)
