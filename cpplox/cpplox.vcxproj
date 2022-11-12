@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClCompile Include="cpplox.cpp" />
     <ClCompile Include="Lox.cpp" />
+    <ClCompile Include="Scanner.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lox.h" />
+    <ClInclude Include="Scanner.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
