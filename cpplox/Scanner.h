@@ -18,6 +18,8 @@ private:
 	void addToken(TokenType type, std::string literal);
 
 	void scanToken();
+	bool match(char expected);
+	char peek();
 
 public:
 	Scanner(std::string source);

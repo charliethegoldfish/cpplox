@@ -60,10 +60,61 @@ void Scanner::scanToken()
 	case '*':
 		addToken(STAR);
 		break;
+	case '!':
+		addToken(match('=') ? BANG_EQUAL : BANG);
+		break;
+	case '=':
+		addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+		break;
+	case '<':
+		addToken(match('=') ? LESS_EQUAL : LESS);
+		break;
+	case '>':
+		addToken(match('=') ? GREAT_EQUAL : GREATER);
+		break;
+	case '/':
+		if (match('/'))
+		{
+			while (peek() != '\n' && !isAtEnd())
+			{
+				advance();
+			}
+		}
+		else
+		{
+			addToken(SLASH);
+		}
+		break;
+
+	case ' ':
+	case '\r':
+	case '\t':
+		// Ignore whitespace
+		break;
+
+	case '\n':
+		line++;
+		break;
+
 	default:
 		Lox::error(line, "Unexpected character.");
 		break;
 	}
+}
+
+bool Scanner::match(char expected)
+{
+	if(isAtEnd()) return false;
+	if(source[current] != expected) return false;
+
+	current++;
+	return true;
+}
+
+char Scanner::peek()
+{
+	if(isAtEnd()) return '\0';
+	return source[current];
 }
 
 bool Scanner::isAtEnd()
@@ -83,7 +134,7 @@ void Scanner::addToken(TokenType type)
 
 void Scanner::addToken(TokenType type, std::string literal)
 {
-	int length = (current - start) - 1;
+	int length = current - start;
 	std::string text = source.substr(start, length);
 	tokens.push_back(Token(type, text, literal, line));
 }
