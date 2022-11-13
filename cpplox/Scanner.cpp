@@ -1,4 +1,5 @@
 #include "Scanner.h"
+#include "Lox.h""
 
 Scanner::Scanner(std::string source) : source(source)
 {
@@ -60,6 +61,7 @@ void Scanner::scanToken()
 		addToken(STAR);
 		break;
 	default:
+		Lox::error(line, "Unexpected character.");
 		break;
 	}
 }
@@ -71,8 +73,7 @@ bool Scanner::isAtEnd()
 
 char Scanner::advance()
 {
-	current++;
-	return source[current];
+	return source[current++];
 }
 
 void Scanner::addToken(TokenType type)
