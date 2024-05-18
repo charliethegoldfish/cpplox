@@ -1,0 +1,30 @@
+CC=g++
+CFLAGS=-g -I. -Wall -std=c++20
+
+OBJDIR=obj
+
+DEPS = Lox.h Scanner.h Token.h
+
+_OBJ = cpplox.o Lox.o Scanner.o Token.o
+OBJ = $(patsubst %,$(OBJDIR)/%,$(_OBJ))
+
+TARGET = cpplox
+
+$(OBJDIR)/%.o: %.cpp $(DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+all: init $(OBJDIR) $(TARGET)
+
+init:
+	@$(CC) --version
+
+$(OBJDIR):
+	mkdir -p $@
+
+$(TARGET): $(OBJ)
+	$(CC) -g -o $@ $^
+
+.PHONY: clean init
+
+clean:
+	rm -rf $(OBJDIR) *~ core

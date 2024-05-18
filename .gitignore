@@ -137,3 +137,5 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+
+cpplox/cpplox
