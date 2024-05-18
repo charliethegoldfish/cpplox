@@ -1,5 +1,5 @@
 #include "Scanner.h"
-#include "Lox.h""
+#include "Lox.h"
 
 Scanner::Scanner(std::string source) : source(source)
 {
