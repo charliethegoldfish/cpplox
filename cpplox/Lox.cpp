@@ -78,7 +78,7 @@ void Lox::error(int line, std::string message)
 void Lox::report(int line, std::string where, std::string message)
 {
 	// TODO: Implement #ErrorHandling for this message - error print rather than normal print (pg 41)
-	// printf("[line %i] Error %s: %s", line, where, message);
-	std::cout << "[line " << line << "] Error " << where << ": " << message << std::endl;
+	 printf("[line %i] Error %s: %s", line, where.c_str(), message.c_str());
+	//std::cout << "[line " << line << "] Error " << where << ": " << message << std::endl;
 	Lox::hadError = true;
 }
