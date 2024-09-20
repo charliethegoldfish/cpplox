@@ -27,6 +27,11 @@ const TokenType GREAT_EQUAL = "GREAT_EQUAL";
 const TokenType LESS = "LESS";
 const TokenType LESS_EQUAL = "LESS_EQUAL";
 
+// Literals
+const TokenType IDENTIFIER = "IDENTIFIER";
+const TokenType STRING = "STRING";
+const TokenType NUMBER = "NUMBER";
+
 // Keywords
 const TokenType AND = "AND";
 const TokenType CLASS = "CLASS";

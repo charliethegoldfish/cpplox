@@ -21,6 +21,8 @@ private:
 	bool match(char expected);
 	char peek();
 
+	void string();
+
 public:
 	Scanner(std::string source);
 	std::vector<Token> scanTokens();
