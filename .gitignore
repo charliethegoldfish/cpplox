@@ -139,3 +139,5 @@ ClientBin/
 orleans.codegen.cs
 
 cpplox/cpplox
+
+build/*
